@@ -1,12 +1,14 @@
 ---
 title: "U.S. Chronic Disease Indicators CDI"
 author: "Team 3"
+resource_files:
+- .Renviron
 output:
   html_notebook:
     code_folding: hide
-    toc: true
+    toc: yes
     toc_depth: 4
-    toc_float: true
+    toc_float: yes
 runtime: shiny
 ---
 
@@ -15,12 +17,6 @@ library(tidyverse)
 library(data.world)
 library(shiny)
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
-project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
-data.world::set_config(cfg_env("DW_API"))
-df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 10000"), dataset = project)
 ```
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
@@ -44,4 +40,34 @@ Some Introduction.
 
 ## **Getting data from data.world** 
 Short description of the data.
+
+```{r}
+project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
+data.world::set_config(cfg_env("DW_API"))
+df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 10000"), dataset = project)
+```
+
+## One Green Thing with No Aggregate Measures - Boxplot
+Some description
+
+```{r}
+# inputPanel(
+#   selectInput("selectRegion", label = "Select Region",
+#               choices = regions, multiple=TRUE, selected="East"),
+#   sliderInput("salesMin", label = "Select Minimum Sales",
+#               min = 0, max = 100119, value = 0, step = 100),
+#   sliderInput("salesMax", label = "Select Maximum Sales",
+#               min = 0, max = 100119, value = 100119, step = 100)
+# )
+
+renderPlot({
+  # df %>% dplyr::filter(region == input$selectRegion) %>% 
+    ggplot(df) + geom_boxplot(mapping = aes(x=topic, y=datavaluealt)) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+  #+ ylim(input$salesMin, input$salesMax)
+})
+```
+
+
+## One Green Thing with Aggregate Measures - Histograms
+Some description
 

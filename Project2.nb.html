@@ -274,15 +274,6 @@ div.tocify {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvamVjdCA8LSBcImh0dHBzOi8vZGF0YS53b3JsZC9vbWFyb2xpdmFyZXovdXMtY2hyb25pYy1kaXNlYXNlLWluZGljYXRvcnNcIlxuZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KFwiRFdfQVBJXCIpKVxuZGYgPC0gZGF0YS53b3JsZDo6cXVlcnkoZGF0YS53b3JsZDo6cXJ5X3NxbChcIlNFTEVDVCAqIEZST00gdV9zX2Nocm9uaWNfZGlzZWFzZV9pbmRpY2F0b3JzX2NkaSBMSU1JVCAxMDAwMFwiKSwgZGF0YXNldCA9IHByb2plY3QpXG5gYGAifQ== -->
-<pre class="r"><code>project &lt;- &quot;https://data.world/omarolivarez/us-chronic-disease-indicators&quot;
-data.world::set_config(cfg_env(&quot;DW_API&quot;))
-df &lt;- data.world::query(data.world::qry_sql(&quot;SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 10000&quot;), dataset = project)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
 <p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
 <p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
 <p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
@@ -291,8 +282,9 @@ df &lt;- data.world::query(data.world::qry_sql(&quot;SELECT * FROM u_s_chronic_d
 <h2><strong>R Session Info</strong></h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2Vzc2lvbkluZm8oKVxuYGBgIn0= -->
-<pre class="r"><code>sessionInfo()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2Vzc2lvbkluZm8oKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r sessionInfo()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -309,9 +301,40 @@ df &lt;- data.world::query(data.world::qry_sql(&quot;SELECT * FROM u_s_chronic_d
 <h2><strong>Getting data from data.world</strong></h2>
 <p>Short description of the data.</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvamVjdCA8LSBcImh0dHBzOi8vZGF0YS53b3JsZC9vbWFyb2xpdmFyZXovdXMtY2hyb25pYy1kaXNlYXNlLWluZGljYXRvcnNcIlxuZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KFwiRFdfQVBJXCIpKVxuZGYgPC0gZGF0YS53b3JsZDo6cXVlcnkoZGF0YS53b3JsZDo6cXJ5X3NxbChcIlNFTEVDVCAqIEZST00gdV9zX2Nocm9uaWNfZGlzZWFzZV9pbmRpY2F0b3JzX2NkaSBMSU1JVCAxMDAwMFwiKSwgZGF0YXNldCA9IHByb2plY3QpXG5gYGAifQ== -->
+<pre class="r"><code>project &lt;- &quot;https://data.world/omarolivarez/us-chronic-disease-indicators&quot;
+data.world::set_config(cfg_env(&quot;DW_API&quot;))
+df &lt;- data.world::query(data.world::qry_sql(&quot;SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 10000&quot;), dataset = project)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="section-one-green-thing-with-no-aggregate-measures---boxplot" class="section level2">
+<h2>One Green Thing with No Aggregate Measures - Boxplot</h2>
+<p>Some description</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpbnB1dFBhbmVsKFxuIyAgIHNlbGVjdElucHV0KFwic2VsZWN0UmVnaW9uXCIsIGxhYmVsID0gXCJTZWxlY3QgUmVnaW9uXCIsXG4jICAgICAgICAgICAgICAgY2hvaWNlcyA9IHJlZ2lvbnMsIG11bHRpcGxlPVRSVUUsIHNlbGVjdGVkPVwiRWFzdFwiKSxcbiMgICBzbGlkZXJJbnB1dChcInNhbGVzTWluXCIsIGxhYmVsID0gXCJTZWxlY3QgTWluaW11bSBTYWxlc1wiLFxuIyAgICAgICAgICAgICAgIG1pbiA9IDAsIG1heCA9IDEwMDExOSwgdmFsdWUgPSAwLCBzdGVwID0gMTAwKSxcbiMgICBzbGlkZXJJbnB1dChcInNhbGVzTWF4XCIsIGxhYmVsID0gXCJTZWxlY3QgTWF4aW11bSBTYWxlc1wiLFxuIyAgICAgICAgICAgICAgIG1pbiA9IDAsIG1heCA9IDEwMDExOSwgdmFsdWUgPSAxMDAxMTksIHN0ZXAgPSAxMDApXG4jIClcblxucmVuZGVyUGxvdCh7XG4gICMgZGYgJT4lIGRwbHlyOjpmaWx0ZXIocmVnaW9uID09IGlucHV0JHNlbGVjdFJlZ2lvbikgJT4lIFxuICAgIGdncGxvdChkZikgKyBnZW9tX2JveHBsb3QobWFwcGluZyA9IGFlcyh4PXRvcGljLCB5PWRhdGF2YWx1ZWFsdCkpICsgdGhlbWUoYXhpcy50ZXh0LnggPSBlbGVtZW50X3RleHQoYW5nbGUgPSA5MCwgaGp1c3QgPSAxKSkgXG4gICMrIHlsaW0oaW5wdXQkc2FsZXNNaW4sIGlucHV0JHNhbGVzTWF4KVxufSlcbmBgYCJ9 -->
+<pre class="r"><code># inputPanel(
+#   selectInput(&quot;selectRegion&quot;, label = &quot;Select Region&quot;,
+#               choices = regions, multiple=TRUE, selected=&quot;East&quot;),
+#   sliderInput(&quot;salesMin&quot;, label = &quot;Select Minimum Sales&quot;,
+#               min = 0, max = 100119, value = 0, step = 100),
+#   sliderInput(&quot;salesMax&quot;, label = &quot;Select Maximum Sales&quot;,
+#               min = 0, max = 100119, value = 100119, step = 100)
+# )
+
+renderPlot({
+  # df %&gt;% dplyr::filter(region == input$selectRegion) %&gt;% 
+    ggplot(df) + geom_boxplot(mapping = aes(x=topic, y=datavaluealt)) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+  #+ ylim(input$salesMin, input$salesMax)
+})</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlUuUy4gQ2hyb25pYyBEaXNlYXNlIEluZGljYXRvcnMgQ0RJIg0KYXV0aG9yOiAiVGVhbSAzIg0Kb3V0cHV0Og0KICBodG1sX25vdGVib29rOg0KICAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgIHRvYzogdHJ1ZQ0KICAgIHRvY19kZXB0aDogNA0KICAgIHRvY19mbG9hdDogdHJ1ZQ0KcnVudGltZTogc2hpbnkNCi0tLQ0KDQpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShkYXRhLndvcmxkKQ0KbGlicmFyeShzaGlueSkNCmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkNCmBgYA0KDQpgYGB7cn0NCnByb2plY3QgPC0gImh0dHBzOi8vZGF0YS53b3JsZC9vbWFyb2xpdmFyZXovdXMtY2hyb25pYy1kaXNlYXNlLWluZGljYXRvcnMiDQpkYXRhLndvcmxkOjpzZXRfY29uZmlnKGNmZ19lbnYoIkRXX0FQSSIpKQ0KZGYgPC0gZGF0YS53b3JsZDo6cXVlcnkoZGF0YS53b3JsZDo6cXJ5X3NxbCgiU0VMRUNUICogRlJPTSB1X3NfY2hyb25pY19kaXNlYXNlX2luZGljYXRvcnNfY2RpIExJTUlUIDEwMDAwIiksIGRhdGFzZXQgPSBwcm9qZWN0KQ0KYGBgDQoNClRoaXMgaXMgYW4gW1IgTWFya2Rvd25dKGh0dHA6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20pIE5vdGVib29rLiBXaGVuIHlvdSBleGVjdXRlIGNvZGUgd2l0aGluIHRoZSBub3RlYm9vaywgdGhlIHJlc3VsdHMgYXBwZWFyIGJlbmVhdGggdGhlIGNvZGUuIA0KDQpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ3RybCtTaGlmdCtFbnRlciouIA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0KDQojIyAqKlIgU2Vzc2lvbiBJbmZvKiogIA0KDQpgYGB7cn0NCnNlc3Npb25JbmZvKCkNCmBgYA0KIyMgKipHaXRodWIgTGluayoqIA0KW1RlYW0gMyBnaXRodWJdKGh0dHBzOi8vZ2l0aHViLmNvbS9LYXNzUGVyZXovRFZQcm9qZWN0MikNCg0KIyMgKipJbnRyb2R1Y3Rpb24qKiANClNvbWUgSW50cm9kdWN0aW9uLg0KDQojIyAqKkdldHRpbmcgZGF0YSBmcm9tIGRhdGEud29ybGQqKiANClNob3J0IGRlc2NyaXB0aW9uIG9mIHRoZSBkYXRhLg0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlUuUy4gQ2hyb25pYyBEaXNlYXNlIEluZGljYXRvcnMgQ0RJIg0KYXV0aG9yOiAiVGVhbSAzIg0KcmVzb3VyY2VfZmlsZXM6DQotIC5SZW52aXJvbg0Kb3V0cHV0Og0KICBodG1sX25vdGVib29rOg0KICAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgIHRvYzogeWVzDQogICAgdG9jX2RlcHRoOiA0DQogICAgdG9jX2Zsb2F0OiB5ZXMNCnJ1bnRpbWU6IHNoaW55DQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZGF0YS53b3JsZCkNCmxpYnJhcnkoc2hpbnkpDQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpDQpgYGANCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDdHJsK1NoaWZ0K0VudGVyKi4gDQoNCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4NCg0KV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuDQoNCiMjICoqUiBTZXNzaW9uIEluZm8qKiAgDQoNCmBgYHtyfQ0Kc2Vzc2lvbkluZm8oKQ0KYGBgDQojIyAqKkdpdGh1YiBMaW5rKiogDQpbVGVhbSAzIGdpdGh1Yl0oaHR0cHM6Ly9naXRodWIuY29tL0thc3NQZXJlei9EVlByb2plY3QyKQ0KDQojIyAqKkludHJvZHVjdGlvbioqIA0KU29tZSBJbnRyb2R1Y3Rpb24uDQoNCiMjICoqR2V0dGluZyBkYXRhIGZyb20gZGF0YS53b3JsZCoqIA0KU2hvcnQgZGVzY3JpcHRpb24gb2YgdGhlIGRhdGEuDQoNCmBgYHtyfQ0KcHJvamVjdCA8LSAiaHR0cHM6Ly9kYXRhLndvcmxkL29tYXJvbGl2YXJlei91cy1jaHJvbmljLWRpc2Vhc2UtaW5kaWNhdG9ycyINCmRhdGEud29ybGQ6OnNldF9jb25maWcoY2ZnX2VudigiRFdfQVBJIikpDQpkZiA8LSBkYXRhLndvcmxkOjpxdWVyeShkYXRhLndvcmxkOjpxcnlfc3FsKCJTRUxFQ1QgKiBGUk9NIHVfc19jaHJvbmljX2Rpc2Vhc2VfaW5kaWNhdG9yc19jZGkgTElNSVQgMTAwMDAiKSwgZGF0YXNldCA9IHByb2plY3QpDQpgYGANCg0KIyMgT25lIEdyZWVuIFRoaW5nIHdpdGggTm8gQWdncmVnYXRlIE1lYXN1cmVzIC0gQm94cGxvdA0KU29tZSBkZXNjcmlwdGlvbg0KDQpgYGB7cn0NCiMgaW5wdXRQYW5lbCgNCiMgICBzZWxlY3RJbnB1dCgic2VsZWN0UmVnaW9uIiwgbGFiZWwgPSAiU2VsZWN0IFJlZ2lvbiIsDQojICAgICAgICAgICAgICAgY2hvaWNlcyA9IHJlZ2lvbnMsIG11bHRpcGxlPVRSVUUsIHNlbGVjdGVkPSJFYXN0IiksDQojICAgc2xpZGVySW5wdXQoInNhbGVzTWluIiwgbGFiZWwgPSAiU2VsZWN0IE1pbmltdW0gU2FsZXMiLA0KIyAgICAgICAgICAgICAgIG1pbiA9IDAsIG1heCA9IDEwMDExOSwgdmFsdWUgPSAwLCBzdGVwID0gMTAwKSwNCiMgICBzbGlkZXJJbnB1dCgic2FsZXNNYXgiLCBsYWJlbCA9ICJTZWxlY3QgTWF4aW11bSBTYWxlcyIsDQojICAgICAgICAgICAgICAgbWluID0gMCwgbWF4ID0gMTAwMTE5LCB2YWx1ZSA9IDEwMDExOSwgc3RlcCA9IDEwMCkNCiMgKQ0KDQpyZW5kZXJQbG90KHsNCiAgIyBkZiAlPiUgZHBseXI6OmZpbHRlcihyZWdpb24gPT0gaW5wdXQkc2VsZWN0UmVnaW9uKSAlPiUgDQogICAgZ2dwbG90KGRmKSArIGdlb21fYm94cGxvdChtYXBwaW5nID0gYWVzKHg9dG9waWMsIHk9ZGF0YXZhbHVlYWx0KSkgKyB0aGVtZShheGlzLnRleHQueCA9IGVsZW1lbnRfdGV4dChhbmdsZSA9IDkwLCBoanVzdCA9IDEpKSANCiAgIysgeWxpbShpbnB1dCRzYWxlc01pbiwgaW5wdXQkc2FsZXNNYXgpDQp9KQ0KYGBgDQo=</div>
 
 
 </div>
