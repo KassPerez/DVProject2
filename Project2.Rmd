@@ -44,26 +44,16 @@ Short description of the data.
 ```{r}
 project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
 data.world::set_config(cfg_env("DW_API"))
-df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 10000"), dataset = project)
+df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 30000"), dataset = project)
 ```
 
 ## One Green Thing with No Aggregate Measures - Boxplot
 Some description
 
 ```{r}
-# inputPanel(
-#   selectInput("selectRegion", label = "Select Region",
-#               choices = regions, multiple=TRUE, selected="East"),
-#   sliderInput("salesMin", label = "Select Minimum Sales",
-#               min = 0, max = 100119, value = 0, step = 100),
-#   sliderInput("salesMax", label = "Select Maximum Sales",
-#               min = 0, max = 100119, value = 100119, step = 100)
-# )
 
 renderPlot({
-  # df %>% dplyr::filter(region == input$selectRegion) %>% 
-    ggplot(df) + geom_boxplot(mapping = aes(x=topic, y=datavaluealt)) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-  #+ ylim(input$salesMin, input$salesMax)
+    ggplot(df) + geom_boxplot(mapping = aes(x=topic, y=datavaluealt)) +   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 })
 ```
 
@@ -71,3 +61,10 @@ renderPlot({
 ## One Green Thing with Aggregate Measures - Histograms
 Some description
 
+```{r}
+
+renderPlot({
+  ggplot(df, mapping = aes(x = datavaluealt, fill = topic)) + geom_histogram(bins = 100) + xlim(0, 100)
+})
+
+```
