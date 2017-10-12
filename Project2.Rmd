@@ -62,7 +62,7 @@ Below our team plotted data_value against the confidence range, with color class
 ```{r}
 project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
 data.world::set_config(cfg_env("DW_API"))
-df2 <- data.world::query(data.world::qry_sql("SELECT locationabbr as state, topic, datavaluealt as data_value,(highconfidencelimit - lowconfidencelimit) as confidence_range
+df2 <- data.world::query(data.world::qry_sql("SELECT yearstart, locationabbr as state, topic, datavaluealt as data_value,(highconfidencelimit - lowconfidencelimit) as confidence_range
 FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt < 200 limit 30000"), dataset = project)
 ```
 
@@ -73,6 +73,23 @@ renderPlot({
 })
 ```
 
+```{r}
+project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
+data.world::set_config(cfg_env("DW_API"))
+df3 <- data.world::query(data.world::qry_sql("SELECT yearstart, datavaluealt as data_value
+FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 30000"), dataset = project)
+```
+
+##Histogram: Frequency of Diseases
+Below we plot the frequency of disaeases, segmenting each bar by demographic information. 
+
+```{r}
+
+renderPlot({
+  ggplot(df, mapping = aes(x = topic, fill = stratification1)) + geom_histogram(bins = 1, stat="count")
+})
+
+```
 ## One Green Thing with Aggregate Measures - Histograms
 Some description
 
