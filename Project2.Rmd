@@ -39,6 +39,8 @@ FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt < 200 limit 30000"), 
 
 df3 <- data.world::query(data.world::qry_sql("SELECT yearstart, datavaluealt as data_value
 FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 30000"), dataset = project)
+
+topics = df %>% dplyr::distinct(topic)
 ```
 
 ## One Green Thing with No Aggregate Measures 
@@ -83,10 +85,13 @@ Here we see diseases across datavalues. Once again, it is very clear that Diabet
 inputPanel(
   selectInput("n_breaks", label = "Number of bins:",
               choices = c(10, 20, 35, 50, 100), selected = 20)
+  
+  ,selectInput("selectTopic", label = "Select Topic",
+              choices = topics, multiple=TRUE, selected="Alcohol")
 )
 
 renderPlot({
-  ggplot(df, mapping = aes(x = datavaluealt,fill = topic)) + geom_histogram(bins=input$n_breaks) + xlim(0, 100)
+   df %>% dplyr::filter(topic == input$selectTopic) %>% ggplot(df, mapping = aes(x = datavaluealt,fill = topic)) + geom_histogram(bins=input$n_breaks) + xlim(0, 100)
 })
 
 ```
