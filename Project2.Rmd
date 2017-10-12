@@ -85,8 +85,13 @@ Here we see diseases across datavalues. Once again, it is very clear that Diabet
 
 ```{r}
 
+inputPanel(
+  selectInput("n_breaks", label = "Number of bins:",
+              choices = c(10, 20, 35, 50, 100), selected = 20)
+)
+
 renderPlot({
-  ggplot(df, mapping = aes(x = datavaluealt, fill = topic)) + geom_histogram(bins = 100) + xlim(0, 100)
+  ggplot(df, mapping = aes(x = datavaluealt,fill = topic)) + geom_histogram(bins=input$n_breaks) + xlim(0, 100)
 })
 
 ```

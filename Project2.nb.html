@@ -274,82 +274,122 @@ div.tocify {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-text-begin -->
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
-<p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
-<div id="section-r-session-info" class="section level2">
-<h2><strong>R Session Info</strong></h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2Vzc2lvbkluZm8oKVxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r sessionInfo()</p>
-<pre><code></code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
 <div id="section-github-link" class="section level2">
 <h2><strong>Github Link</strong></h2>
 <p><a href="https://github.com/KassPerez/DVProject2">Team 3 github</a></p>
 </div>
 <div id="section-introduction" class="section level2">
 <h2><strong>Introduction</strong></h2>
-<p>Some Introduction.</p>
+<p>The purpose of this project is to create the following data visualizations using R’s ggplot2 library: Boxplot(s), Histograms(s), Scatter Plots(s), Parameter(s), and Barchart(s).</p>
 </div>
-<div id="section-getting-data-from-data.world" class="section level2">
-<h2><strong>Getting data from data.world</strong></h2>
-<p>Short description of the data.</p>
+<div id="section-description-of-the-dataset" class="section level2">
+<h2><strong>Description of the dataset:</strong></h2>
+<p>The U.S. Chronic Disease Indicators dataset contains over 30,000 entries. Each instance contains the attributes: yearstart, yearend, locationabbr, locationdesc, datasource, topic (disease type), question, response, datavalueunit, datavaluetype, datavalue, datavalue, datavaluealt, datavaluefootnotesymbol, datavaluefootnote, lowconfidencelimit, highconfidencelimit, strateficationcategory1, stratification1, stratificationcategory2, stratification2, stratificationcategory3, stratification3, geolocation, responseid, locationid, topicid, questionid, datavaluetypeid, strateficationcategoryid1, stratificationid1, stratificationcategoryid2, stratificationid2, stratificationcategoryid3, and stratificationid3.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvamVjdCA8LSBcImh0dHBzOi8vZGF0YS53b3JsZC9vbWFyb2xpdmFyZXovdXMtY2hyb25pYy1kaXNlYXNlLWluZGljYXRvcnNcIlxuZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KFwiRFdfQVBJXCIpKVxuZGYgPC0gZGF0YS53b3JsZDo6cXVlcnkoZGF0YS53b3JsZDo6cXJ5X3NxbChcIlNFTEVDVCAqIEZST00gdV9zX2Nocm9uaWNfZGlzZWFzZV9pbmRpY2F0b3JzX2NkaSBMSU1JVCAxMDAwMFwiKSwgZGF0YXNldCA9IHByb2plY3QpXG5gYGAifQ== -->
-<pre class="r"><code>project &lt;- &quot;https://data.world/omarolivarez/us-chronic-disease-indicators&quot;
-data.world::set_config(cfg_env(&quot;DW_API&quot;))
-df &lt;- data.world::query(data.world::qry_sql(&quot;SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 10000&quot;), dataset = project)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuc2Vzc2lvbkluZm8oKVxuYGBgXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r</p>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="section-one-green-thing-with-no-aggregate-measures---boxplot" class="section level2">
-<h2>One Green Thing with No Aggregate Measures - Boxplot</h2>
-<p>Some description</p>
+<div id="section-one-green-thing-with-no-aggregate-measures" class="section level2">
+<h2>One Green Thing with No Aggregate Measures</h2>
+<div id="section-boxplot-of-data-values" class="section level3">
+<h3><em>Boxplot of Data Values</em></h3>
+<p>Below my team plotted boxplots of data values, which are counts of a disease per year. Additionally, we separated these by disease type, to search for large discrepancies between the occurrences of each disease type per year. Among all disease types, Chronic Kidney Disease stands out in that all of its data values are above all other data values for every other disease. Overarching Diseases stands out for the opposite reason: every one of its data values occur below the means for all other disease types.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBpbnB1dFBhbmVsKFxuIyAgIHNlbGVjdElucHV0KFwic2VsZWN0UmVnaW9uXCIsIGxhYmVsID0gXCJTZWxlY3QgUmVnaW9uXCIsXG4jICAgICAgICAgICAgICAgY2hvaWNlcyA9IHJlZ2lvbnMsIG11bHRpcGxlPVRSVUUsIHNlbGVjdGVkPVwiRWFzdFwiKSxcbiMgICBzbGlkZXJJbnB1dChcInNhbGVzTWluXCIsIGxhYmVsID0gXCJTZWxlY3QgTWluaW11bSBTYWxlc1wiLFxuIyAgICAgICAgICAgICAgIG1pbiA9IDAsIG1heCA9IDEwMDExOSwgdmFsdWUgPSAwLCBzdGVwID0gMTAwKSxcbiMgICBzbGlkZXJJbnB1dChcInNhbGVzTWF4XCIsIGxhYmVsID0gXCJTZWxlY3QgTWF4aW11bSBTYWxlc1wiLFxuIyAgICAgICAgICAgICAgIG1pbiA9IDAsIG1heCA9IDEwMDExOSwgdmFsdWUgPSAxMDAxMTksIHN0ZXAgPSAxMDApXG4jIClcblxucmVuZGVyUGxvdCh7XG4gICMgZGYgJT4lIGRwbHlyOjpmaWx0ZXIocmVnaW9uID09IGlucHV0JHNlbGVjdFJlZ2lvbikgJT4lIFxuICAgIGdncGxvdChkZikgKyBnZW9tX2JveHBsb3QobWFwcGluZyA9IGFlcyh4PXRvcGljLCB5PWRhdGF2YWx1ZWFsdCkpICsgdGhlbWUoYXhpcy50ZXh0LnggPSBlbGVtZW50X3RleHQoYW5nbGUgPSA5MCwgaGp1c3QgPSAxKSkgXG4gICMrIHlsaW0oaW5wdXQkc2FsZXNNaW4sIGlucHV0JHNhbGVzTWF4KVxufSlcbmBgYCJ9 -->
-<pre class="r"><code># inputPanel(
-#   selectInput(&quot;selectRegion&quot;, label = &quot;Select Region&quot;,
-#               choices = regions, multiple=TRUE, selected=&quot;East&quot;),
-#   sliderInput(&quot;salesMin&quot;, label = &quot;Select Minimum Sales&quot;,
-#               min = 0, max = 100119, value = 0, step = 100),
-#   sliderInput(&quot;salesMax&quot;, label = &quot;Select Maximum Sales&quot;,
-#               min = 0, max = 100119, value = 100119, step = 100)
-# )
-
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5yZW5kZXJQbG90KHtcbiAgICBnZ3Bsb3QoZGYpICsgZ2VvbV9ib3hwbG90KG1hcHBpbmcgPSBhZXMoeD10b3BpYywgeT1kYXRhdmFsdWVhbHQpKSArICAgdGhlbWUoYXhpcy50ZXh0LnggPSBlbGVtZW50X3RleHQoYW5nbGUgPSA5MCwgaGp1c3QgPSAxKSkgXG59KVxuYGBgIn0= -->
+<pre class="r"><code>
 renderPlot({
-  # df %&gt;% dplyr::filter(region == input$selectRegion) %&gt;% 
-    ggplot(df) + geom_boxplot(mapping = aes(x=topic, y=datavaluealt)) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-  #+ ylim(input$salesMin, input$salesMax)
+    ggplot(df) + geom_boxplot(mapping = aes(x=topic, y=datavaluealt)) +   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 })</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="section-one-green-thing-with-aggregate-measures---histograms" class="section level2">
-<h2>One Green Thing with Aggregate Measures - Histograms</h2>
-<p>Some description</p>
+</div>
+<div id="section-two-green-things-with-no-aggregate-measures" class="section level2">
+<h2>Two Green Things with No Aggregate Measures</h2>
+<div id="section-scatterplot-of-diseases-across-confidence-ranges-and-data-types" class="section level3">
+<h3><em>Scatterplot of Diseases Across Confidence Ranges and Data Types</em></h3>
+<p>Below our team plotted data_value against the confidence range, with color classified by the topic, or disease type. Confidence range actuallly does not exist in the original dataset, so our team wrote a SQL query to essentally create a calculated field composed of the difference between high_confidence_limit and low_confidence_limit. The scatter plot below demonstrates an interesting phenomena: data values occur exclusively above a positive slope line up until a confidence range of 40, where a few data values deviate slightly below the invisible slope.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5yZW5kZXJQbG90KHtcbiAgZ2dwbG90KGRmKSArIGdlb21faGlzdG9ncmFtKG1hcHBpbmcgPSBhZXMgKHg9dG9waWMseT1kYXRhdmFsdWVhbHQpKVxufSlcblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvamVjdCA8LSBcImh0dHBzOi8vZGF0YS53b3JsZC9vbWFyb2xpdmFyZXovdXMtY2hyb25pYy1kaXNlYXNlLWluZGljYXRvcnNcIlxuZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KFwiRFdfQVBJXCIpKVxuZGYyIDwtIGRhdGEud29ybGQ6OnF1ZXJ5KGRhdGEud29ybGQ6OnFyeV9zcWwoXCJTRUxFQ1QgeWVhcnN0YXJ0LCBsb2NhdGlvbmFiYnIgYXMgc3RhdGUsIHRvcGljLCBkYXRhdmFsdWVhbHQgYXMgZGF0YV92YWx1ZSwoaGlnaGNvbmZpZGVuY2VsaW1pdCAtIGxvd2NvbmZpZGVuY2VsaW1pdCkgYXMgY29uZmlkZW5jZV9yYW5nZVxuRlJPTSB1X3NfY2hyb25pY19kaXNlYXNlX2luZGljYXRvcnNfY2RpIFdIRVJFIGRhdGF2YWx1ZWFsdCA8IDIwMCBsaW1pdCAzMDAwMFwiKSwgZGF0YXNldCA9IHByb2plY3QpXG5gYGAifQ== -->
+<pre class="r"><code>project &lt;- &quot;https://data.world/omarolivarez/us-chronic-disease-indicators&quot;
+data.world::set_config(cfg_env(&quot;DW_API&quot;))
+df2 &lt;- data.world::query(data.world::qry_sql(&quot;SELECT yearstart, locationabbr as state, topic, datavaluealt as data_value,(highconfidencelimit - lowconfidencelimit) as confidence_range
+FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt &lt; 200 limit 30000&quot;), dataset = project)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5yZW5kZXJQbG90KHtcbiAgICBnZ3Bsb3QoZGYyKSArIGdlb21fcG9pbnQobWFwcGluZyA9IGFlcyh4PWNvbmZpZGVuY2VfcmFuZ2UsIHk9ZGF0YV92YWx1ZSwgY29sb3I9dG9waWMpKVxufSlcbmBgYCJ9 -->
 <pre class="r"><code>
 renderPlot({
-  ggplot(df) + geom_histogram(mapping = aes (x=topic,y=datavaluealt))
+    ggplot(df2) + geom_point(mapping = aes(x=confidence_range, y=data_value, color=topic))
+})</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvamVjdCA8LSBcImh0dHBzOi8vZGF0YS53b3JsZC9vbWFyb2xpdmFyZXovdXMtY2hyb25pYy1kaXNlYXNlLWluZGljYXRvcnNcIlxuZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KFwiRFdfQVBJXCIpKVxuZGYzIDwtIGRhdGEud29ybGQ6OnF1ZXJ5KGRhdGEud29ybGQ6OnFyeV9zcWwoXCJTRUxFQ1QgeWVhcnN0YXJ0LCBkYXRhdmFsdWVhbHQgYXMgZGF0YV92YWx1ZVxuRlJPTSB1X3NfY2hyb25pY19kaXNlYXNlX2luZGljYXRvcnNfY2RpIEdST1VQIEJZIHllYXJzdGFydCBsaW1pdCAzMDAwMFwiKSwgZGF0YXNldCA9IHByb2plY3QpXG5gYGAifQ== -->
+<pre class="r"><code>project &lt;- &quot;https://data.world/omarolivarez/us-chronic-disease-indicators&quot;
+data.world::set_config(cfg_env(&quot;DW_API&quot;))
+df3 &lt;- data.world::query(data.world::qry_sql(&quot;SELECT yearstart, datavaluealt as data_value
+FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 30000&quot;), dataset = project)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="section-one-green-thing-with-aggregate-measures" class="section level2">
+<h2>One Green Thing with Aggregate Measures</h2>
+<div id="section-histogram-of-frequency-of-diseases" class="section level3">
+<h3><em>Histogram of Frequency of Diseases</em></h3>
+<p>Below we plot the frequency of disaeases, segmenting each bar by demographic information. It is apparent that the data collectors did a good job of ensuring that an even distribution of each of their stratification1 demographics were distributed in the data. It is also clear that Diabetes is several multiples higher than any of the other diseases.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5yZW5kZXJQbG90KHtcbiAgZ2dwbG90KGRmLCBtYXBwaW5nID0gYWVzKHggPSB0b3BpYywgZmlsbCA9IHN0cmF0aWZpY2F0aW9uMSkpICsgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDEsIHN0YXQ9XCJjb3VudFwiKSArICAgdGhlbWUoYXhpcy50ZXh0LnggPSBlbGVtZW50X3RleHQoYW5nbGUgPSA5MCwgaGp1c3QgPSAxKSkgXG59KVxuXG5gYGAifQ== -->
+<pre class="r"><code>
+renderPlot({
+  ggplot(df, mapping = aes(x = topic, fill = stratification1)) + geom_histogram(bins = 1, stat=&quot;count&quot;) +   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 })
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="section-histogram-of-data-values" class="section level3">
+<h3><em>Histogram of Data values</em></h3>
+<p>Here we see diseases across datavalues. Once again, it is very clear that Diabetes is the disease most frequently recorded, with that frequency increasing at data values greater than 50. We can see that the distribution of data values is not normally distributed, but instead has three large swells throughout the distribution. At the high and low end of data values (close to 0 and greater than 80), the frequency of data values drops noticeably.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5pbnB1dFBhbmVsKFxuICBzZWxlY3RJbnB1dChcIm5fYnJlYWtzXCIsIGxhYmVsID0gXCJOdW1iZXIgb2YgYmluczpcIixcbiAgICAgICAgICAgICAgY2hvaWNlcyA9IGMoMTAsIDIwLCAzNSwgNTAsIDEwMCksIHNlbGVjdGVkID0gMjApXG4pXG5cbnJlbmRlclBsb3Qoe1xuICBnZ3Bsb3QoZGYpICsgZ2VvbV9oaXN0b2dyYW0oYmlucz1pbnB1dCRuX2JyZWFrcyxtYXBwaW5nID0gYWVzKHggPSBkYXRhdmFsdWVhbHQsIGZpbGwgPSB0b3BpYykpICsgeGxpbSgwLCAxMDApXG59KVxuXG5gYGAifQ== -->
+<pre class="r"><code>
+inputPanel(
+  selectInput(&quot;n_breaks&quot;, label = &quot;Number of bins:&quot;,
+              choices = c(10, 20, 35, 50, 100), selected = 20)
+)
+
+renderPlot({
+  ggplot(df) + geom_histogram(bins=input$n_breaks,mapping = aes(x = datavaluealt, fill = topic)) + xlim(0, 100)
+})
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+</div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlUuUy4gQ2hyb25pYyBEaXNlYXNlIEluZGljYXRvcnMgQ0RJIg0KYXV0aG9yOiAiVGVhbSAzIg0KcmVzb3VyY2VfZmlsZXM6DQotIC5SZW52aXJvbg0Kb3V0cHV0Og0KICBodG1sX25vdGVib29rOg0KICAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgIHRvYzogeWVzDQogICAgdG9jX2RlcHRoOiA0DQogICAgdG9jX2Zsb2F0OiB5ZXMNCnJ1bnRpbWU6IHNoaW55DQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZGF0YS53b3JsZCkNCmxpYnJhcnkoc2hpbnkpDQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpDQpgYGANCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDdHJsK1NoaWZ0K0VudGVyKi4gDQoNCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4NCg0KV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuDQoNCiMjICoqUiBTZXNzaW9uIEluZm8qKiAgDQoNCmBgYHtyfQ0Kc2Vzc2lvbkluZm8oKQ0KYGBgDQojIyAqKkdpdGh1YiBMaW5rKiogDQpbVGVhbSAzIGdpdGh1Yl0oaHR0cHM6Ly9naXRodWIuY29tL0thc3NQZXJlei9EVlByb2plY3QyKQ0KDQojIyAqKkludHJvZHVjdGlvbioqIA0KU29tZSBJbnRyb2R1Y3Rpb24uDQoNCiMjICoqR2V0dGluZyBkYXRhIGZyb20gZGF0YS53b3JsZCoqIA0KU2hvcnQgZGVzY3JpcHRpb24gb2YgdGhlIGRhdGEuDQoNCmBgYHtyfQ0KcHJvamVjdCA8LSAiaHR0cHM6Ly9kYXRhLndvcmxkL29tYXJvbGl2YXJlei91cy1jaHJvbmljLWRpc2Vhc2UtaW5kaWNhdG9ycyINCmRhdGEud29ybGQ6OnNldF9jb25maWcoY2ZnX2VudigiRFdfQVBJIikpDQpkZiA8LSBkYXRhLndvcmxkOjpxdWVyeShkYXRhLndvcmxkOjpxcnlfc3FsKCJTRUxFQ1QgKiBGUk9NIHVfc19jaHJvbmljX2Rpc2Vhc2VfaW5kaWNhdG9yc19jZGkgTElNSVQgMTAwMDAiKSwgZGF0YXNldCA9IHByb2plY3QpDQpgYGANCg0KIyMgT25lIEdyZWVuIFRoaW5nIHdpdGggTm8gQWdncmVnYXRlIE1lYXN1cmVzIC0gQm94cGxvdA0KU29tZSBkZXNjcmlwdGlvbg0KDQpgYGB7cn0NCiMgaW5wdXRQYW5lbCgNCiMgICBzZWxlY3RJbnB1dCgic2VsZWN0UmVnaW9uIiwgbGFiZWwgPSAiU2VsZWN0IFJlZ2lvbiIsDQojICAgICAgICAgICAgICAgY2hvaWNlcyA9IHJlZ2lvbnMsIG11bHRpcGxlPVRSVUUsIHNlbGVjdGVkPSJFYXN0IiksDQojICAgc2xpZGVySW5wdXQoInNhbGVzTWluIiwgbGFiZWwgPSAiU2VsZWN0IE1pbmltdW0gU2FsZXMiLA0KIyAgICAgICAgICAgICAgIG1pbiA9IDAsIG1heCA9IDEwMDExOSwgdmFsdWUgPSAwLCBzdGVwID0gMTAwKSwNCiMgICBzbGlkZXJJbnB1dCgic2FsZXNNYXgiLCBsYWJlbCA9ICJTZWxlY3QgTWF4aW11bSBTYWxlcyIsDQojICAgICAgICAgICAgICAgbWluID0gMCwgbWF4ID0gMTAwMTE5LCB2YWx1ZSA9IDEwMDExOSwgc3RlcCA9IDEwMCkNCiMgKQ0KDQpyZW5kZXJQbG90KHsNCiAgIyBkZiAlPiUgZHBseXI6OmZpbHRlcihyZWdpb24gPT0gaW5wdXQkc2VsZWN0UmVnaW9uKSAlPiUgDQogICAgZ2dwbG90KGRmKSArIGdlb21fYm94cGxvdChtYXBwaW5nID0gYWVzKHg9dG9waWMsIHk9ZGF0YXZhbHVlYWx0KSkgKyB0aGVtZShheGlzLnRleHQueCA9IGVsZW1lbnRfdGV4dChhbmdsZSA9IDkwLCBoanVzdCA9IDEpKSANCiAgIysgeWxpbShpbnB1dCRzYWxlc01pbiwgaW5wdXQkc2FsZXNNYXgpDQp9KQ0KYGBgDQoNCg0KIyMgT25lIEdyZWVuIFRoaW5nIHdpdGggQWdncmVnYXRlIE1lYXN1cmVzIC0gSGlzdG9ncmFtcw0KU29tZSBkZXNjcmlwdGlvbg0KDQpgYGB7cn0NCg0KcmVuZGVyUGxvdCh7DQogIGdncGxvdChkZikgKyBnZW9tX2hpc3RvZ3JhbShtYXBwaW5nID0gYWVzICh4PXRvcGljLHk9ZGF0YXZhbHVlYWx0KSkNCn0pDQoNCmBgYA0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlUuUy4gQ2hyb25pYyBEaXNlYXNlIEluZGljYXRvcnMgQ0RJIg0KYXV0aG9yOiAiVGVhbSAzIg0KcmVzb3VyY2VfZmlsZXM6DQotIC5SZW52aXJvbg0Kb3V0cHV0Og0KICBodG1sX25vdGVib29rOg0KICAgIGNvZGVfZm9sZGluZzogaGlkZQ0KICAgIHRvYzogeWVzDQogICAgdG9jX2RlcHRoOiA0DQogICAgdG9jX2Zsb2F0OiB5ZXMNCnJ1bnRpbWU6IHNoaW55DQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZGF0YS53b3JsZCkNCmxpYnJhcnkoc2hpbnkpDQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpDQpgYGANCg0KIyMgKipHaXRodWIgTGluayoqIA0KW1RlYW0gMyBnaXRodWJdKGh0dHBzOi8vZ2l0aHViLmNvbS9LYXNzUGVyZXovRFZQcm9qZWN0MikNCg0KIyMgKipJbnRyb2R1Y3Rpb24qKiANClRoZSBwdXJwb3NlIG9mIHRoaXMgcHJvamVjdCBpcyB0byBjcmVhdGUgdGhlIGZvbGxvd2luZyBkYXRhIHZpc3VhbGl6YXRpb25zIHVzaW5nIFIncyBnZ3Bsb3QyIGxpYnJhcnk6IEJveHBsb3QocyksIEhpc3RvZ3JhbXMocyksIFNjYXR0ZXIgUGxvdHMocyksIFBhcmFtZXRlcihzKSwgYW5kIEJhcmNoYXJ0KHMpLiANCg0KIyMgKipEZXNjcmlwdGlvbiBvZiB0aGUgZGF0YXNldDoqKiANClRoZSBVLlMuIENocm9uaWMgRGlzZWFzZSBJbmRpY2F0b3JzIGRhdGFzZXQgY29udGFpbnMgb3ZlciAzMCwwMDAgZW50cmllcy4gRWFjaCBpbnN0YW5jZSBjb250YWlucyB0aGUgYXR0cmlidXRlczogeWVhcnN0YXJ0LCB5ZWFyZW5kLCBsb2NhdGlvbmFiYnIsIGxvY2F0aW9uZGVzYywgZGF0YXNvdXJjZSwgdG9waWMgKGRpc2Vhc2UgdHlwZSksIHF1ZXN0aW9uLCByZXNwb25zZSwgZGF0YXZhbHVldW5pdCwgZGF0YXZhbHVldHlwZSwgZGF0YXZhbHVlLCBkYXRhdmFsdWUsIGRhdGF2YWx1ZWFsdCwgZGF0YXZhbHVlZm9vdG5vdGVzeW1ib2wsIGRhdGF2YWx1ZWZvb3Rub3RlLCBsb3djb25maWRlbmNlbGltaXQsIGhpZ2hjb25maWRlbmNlbGltaXQsIHN0cmF0ZWZpY2F0aW9uY2F0ZWdvcnkxLCBzdHJhdGlmaWNhdGlvbjEsIHN0cmF0aWZpY2F0aW9uY2F0ZWdvcnkyLCBzdHJhdGlmaWNhdGlvbjIsIHN0cmF0aWZpY2F0aW9uY2F0ZWdvcnkzLCBzdHJhdGlmaWNhdGlvbjMsIGdlb2xvY2F0aW9uLCByZXNwb25zZWlkLCBsb2NhdGlvbmlkLCB0b3BpY2lkLCBxdWVzdGlvbmlkLCBkYXRhdmFsdWV0eXBlaWQsIHN0cmF0ZWZpY2F0aW9uY2F0ZWdvcnlpZDEsIHN0cmF0aWZpY2F0aW9uaWQxLCBzdHJhdGlmaWNhdGlvbmNhdGVnb3J5aWQyLCBzdHJhdGlmaWNhdGlvbmlkMiwgc3RyYXRpZmljYXRpb25jYXRlZ29yeWlkMywgYW5kIHN0cmF0aWZpY2F0aW9uaWQzLg0KDQpgYGB7cn0NCnByb2plY3QgPC0gImh0dHBzOi8vZGF0YS53b3JsZC9vbWFyb2xpdmFyZXovdXMtY2hyb25pYy1kaXNlYXNlLWluZGljYXRvcnMiDQpkYXRhLndvcmxkOjpzZXRfY29uZmlnKGNmZ19lbnYoIkRXX0FQSSIpKQ0KZGYgPC0gZGF0YS53b3JsZDo6cXVlcnkoZGF0YS53b3JsZDo6cXJ5X3NxbCgiU0VMRUNUICogRlJPTSB1X3NfY2hyb25pY19kaXNlYXNlX2luZGljYXRvcnNfY2RpIExJTUlUIDMwMDAwIiksIGRhdGFzZXQgPSBwcm9qZWN0KQ0KYGBgDQoNCiMjIE9uZSBHcmVlbiBUaGluZyB3aXRoIE5vIEFnZ3JlZ2F0ZSBNZWFzdXJlcyANCiMjIyAqQm94cGxvdCBvZiBEYXRhIFZhbHVlcyogDQpCZWxvdyBteSB0ZWFtIHBsb3R0ZWQgYm94cGxvdHMgb2YgZGF0YSB2YWx1ZXMsIHdoaWNoIGFyZSBjb3VudHMgb2YgYSBkaXNlYXNlIHBlciB5ZWFyLiBBZGRpdGlvbmFsbHksIHdlIHNlcGFyYXRlZCB0aGVzZSBieSBkaXNlYXNlIHR5cGUsIHRvIHNlYXJjaCBmb3IgbGFyZ2UgZGlzY3JlcGFuY2llcyBiZXR3ZWVuIHRoZSBvY2N1cnJlbmNlcyBvZiBlYWNoIGRpc2Vhc2UgdHlwZSBwZXIgeWVhci4gQW1vbmcgYWxsIGRpc2Vhc2UgdHlwZXMsIENocm9uaWMgS2lkbmV5IERpc2Vhc2Ugc3RhbmRzIG91dCBpbiB0aGF0IGFsbCBvZiBpdHMgZGF0YSB2YWx1ZXMgYXJlIGFib3ZlIGFsbCBvdGhlciBkYXRhIHZhbHVlcyBmb3IgZXZlcnkgb3RoZXIgZGlzZWFzZS4gT3ZlcmFyY2hpbmcgRGlzZWFzZXMgc3RhbmRzIG91dCBmb3IgdGhlIG9wcG9zaXRlIHJlYXNvbjogZXZlcnkgb25lIG9mIGl0cyBkYXRhIHZhbHVlcyBvY2N1ciBiZWxvdyB0aGUgbWVhbnMgZm9yIGFsbCBvdGhlciBkaXNlYXNlIHR5cGVzLiANCg0KYGBge3J9DQoNCnJlbmRlclBsb3Qoew0KICAgIGdncGxvdChkZikgKyBnZW9tX2JveHBsb3QobWFwcGluZyA9IGFlcyh4PXRvcGljLCB5PWRhdGF2YWx1ZWFsdCkpICsgICB0aGVtZShheGlzLnRleHQueCA9IGVsZW1lbnRfdGV4dChhbmdsZSA9IDkwLCBoanVzdCA9IDEpKSANCn0pDQpgYGANCg0KIyMgVHdvIEdyZWVuIFRoaW5ncyB3aXRoIE5vIEFnZ3JlZ2F0ZSBNZWFzdXJlcyANCiMjIyAqU2NhdHRlcnBsb3Qgb2YgRGlzZWFzZXMgQWNyb3NzIENvbmZpZGVuY2UgUmFuZ2VzIGFuZCBEYXRhIFR5cGVzKg0KQmVsb3cgb3VyIHRlYW0gcGxvdHRlZCBkYXRhX3ZhbHVlIGFnYWluc3QgdGhlIGNvbmZpZGVuY2UgcmFuZ2UsIHdpdGggY29sb3IgY2xhc3NpZmllZCBieSB0aGUgdG9waWMsIG9yIGRpc2Vhc2UgdHlwZS4gQ29uZmlkZW5jZSByYW5nZSBhY3R1YWxsbHkgZG9lcyBub3QgZXhpc3QgaW4gdGhlIG9yaWdpbmFsIGRhdGFzZXQsIHNvIG91ciB0ZWFtIHdyb3RlIGEgU1FMIHF1ZXJ5IHRvIGVzc2VudGFsbHkgY3JlYXRlIGEgY2FsY3VsYXRlZCBmaWVsZCBjb21wb3NlZCBvZiB0aGUgZGlmZmVyZW5jZSBiZXR3ZWVuIGhpZ2hfY29uZmlkZW5jZV9saW1pdCBhbmQgbG93X2NvbmZpZGVuY2VfbGltaXQuIFRoZSBzY2F0dGVyIHBsb3QgYmVsb3cgZGVtb25zdHJhdGVzIGFuIGludGVyZXN0aW5nIHBoZW5vbWVuYTogZGF0YSB2YWx1ZXMgb2NjdXIgZXhjbHVzaXZlbHkgYWJvdmUgYSBwb3NpdGl2ZSBzbG9wZSBsaW5lIHVwIHVudGlsIGEgY29uZmlkZW5jZSByYW5nZSBvZiA0MCwgd2hlcmUgYSBmZXcgZGF0YSB2YWx1ZXMgZGV2aWF0ZSBzbGlnaHRseSBiZWxvdyB0aGUgaW52aXNpYmxlIHNsb3BlLg0KYGBge3J9DQpwcm9qZWN0IDwtICJodHRwczovL2RhdGEud29ybGQvb21hcm9saXZhcmV6L3VzLWNocm9uaWMtZGlzZWFzZS1pbmRpY2F0b3JzIg0KZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KCJEV19BUEkiKSkNCmRmMiA8LSBkYXRhLndvcmxkOjpxdWVyeShkYXRhLndvcmxkOjpxcnlfc3FsKCJTRUxFQ1QgeWVhcnN0YXJ0LCBsb2NhdGlvbmFiYnIgYXMgc3RhdGUsIHRvcGljLCBkYXRhdmFsdWVhbHQgYXMgZGF0YV92YWx1ZSwoaGlnaGNvbmZpZGVuY2VsaW1pdCAtIGxvd2NvbmZpZGVuY2VsaW1pdCkgYXMgY29uZmlkZW5jZV9yYW5nZQ0KRlJPTSB1X3NfY2hyb25pY19kaXNlYXNlX2luZGljYXRvcnNfY2RpIFdIRVJFIGRhdGF2YWx1ZWFsdCA8IDIwMCBsaW1pdCAzMDAwMCIpLCBkYXRhc2V0ID0gcHJvamVjdCkNCmBgYA0KDQpgYGB7cn0NCg0KcmVuZGVyUGxvdCh7DQogICAgZ2dwbG90KGRmMikgKyBnZW9tX3BvaW50KG1hcHBpbmcgPSBhZXMoeD1jb25maWRlbmNlX3JhbmdlLCB5PWRhdGFfdmFsdWUsIGNvbG9yPXRvcGljKSkNCn0pDQpgYGANCg0KYGBge3J9DQpwcm9qZWN0IDwtICJodHRwczovL2RhdGEud29ybGQvb21hcm9saXZhcmV6L3VzLWNocm9uaWMtZGlzZWFzZS1pbmRpY2F0b3JzIg0KZGF0YS53b3JsZDo6c2V0X2NvbmZpZyhjZmdfZW52KCJEV19BUEkiKSkNCmRmMyA8LSBkYXRhLndvcmxkOjpxdWVyeShkYXRhLndvcmxkOjpxcnlfc3FsKCJTRUxFQ1QgeWVhcnN0YXJ0LCBkYXRhdmFsdWVhbHQgYXMgZGF0YV92YWx1ZQ0KRlJPTSB1X3NfY2hyb25pY19kaXNlYXNlX2luZGljYXRvcnNfY2RpIEdST1VQIEJZIHllYXJzdGFydCBsaW1pdCAzMDAwMCIpLCBkYXRhc2V0ID0gcHJvamVjdCkNCmBgYA0KDQojIyBPbmUgR3JlZW4gVGhpbmcgd2l0aCBBZ2dyZWdhdGUgTWVhc3VyZXMgDQojIyMgKkhpc3RvZ3JhbSBvZiBGcmVxdWVuY3kgb2YgRGlzZWFzZXMqDQpCZWxvdyB3ZSBwbG90IHRoZSBmcmVxdWVuY3kgb2YgZGlzYWVhc2VzLCBzZWdtZW50aW5nIGVhY2ggYmFyIGJ5IGRlbW9ncmFwaGljIGluZm9ybWF0aW9uLiBJdCBpcyBhcHBhcmVudCB0aGF0IHRoZSBkYXRhIGNvbGxlY3RvcnMgZGlkIGEgZ29vZCBqb2Igb2YgZW5zdXJpbmcgdGhhdCBhbiBldmVuIGRpc3RyaWJ1dGlvbiBvZiBlYWNoIG9mIHRoZWlyIHN0cmF0aWZpY2F0aW9uMSBkZW1vZ3JhcGhpY3Mgd2VyZSBkaXN0cmlidXRlZCBpbiB0aGUgZGF0YS4gSXQgaXMgYWxzbyBjbGVhciB0aGF0IERpYWJldGVzIGlzIHNldmVyYWwgbXVsdGlwbGVzIGhpZ2hlciB0aGFuIGFueSBvZiB0aGUgb3RoZXIgZGlzZWFzZXMuDQoNCmBgYHtyfQ0KDQpyZW5kZXJQbG90KHsNCiAgZ2dwbG90KGRmLCBtYXBwaW5nID0gYWVzKHggPSB0b3BpYywgZmlsbCA9IHN0cmF0aWZpY2F0aW9uMSkpICsgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDEsIHN0YXQ9ImNvdW50IikgKyAgIHRoZW1lKGF4aXMudGV4dC54ID0gZWxlbWVudF90ZXh0KGFuZ2xlID0gOTAsIGhqdXN0ID0gMSkpIA0KfSkNCg0KYGBgDQojIyMgKkhpc3RvZ3JhbSBvZiBEYXRhIHZhbHVlcyoNCkhlcmUgd2Ugc2VlIGRpc2Vhc2VzIGFjcm9zcyBkYXRhdmFsdWVzLiBPbmNlIGFnYWluLCBpdCBpcyB2ZXJ5IGNsZWFyIHRoYXQgRGlhYmV0ZXMgaXMgdGhlIGRpc2Vhc2UgbW9zdCBmcmVxdWVudGx5IHJlY29yZGVkLCB3aXRoIHRoYXQgZnJlcXVlbmN5IGluY3JlYXNpbmcgYXQgZGF0YSB2YWx1ZXMgZ3JlYXRlciB0aGFuIDUwLiBXZSBjYW4gc2VlIHRoYXQgdGhlIGRpc3RyaWJ1dGlvbiBvZiBkYXRhIHZhbHVlcyBpcyBub3Qgbm9ybWFsbHkgZGlzdHJpYnV0ZWQsIGJ1dCBpbnN0ZWFkIGhhcyB0aHJlZSBsYXJnZSBzd2VsbHMgdGhyb3VnaG91dCB0aGUgZGlzdHJpYnV0aW9uLiBBdCB0aGUgaGlnaCBhbmQgbG93IGVuZCBvZiBkYXRhIHZhbHVlcyAoY2xvc2UgdG8gMCBhbmQgZ3JlYXRlciB0aGFuIDgwKSwgdGhlIGZyZXF1ZW5jeSBvZiBkYXRhIHZhbHVlcyBkcm9wcyBub3RpY2VhYmx5Lg0KDQpgYGB7cn0NCg0KaW5wdXRQYW5lbCgNCiAgc2VsZWN0SW5wdXQoIm5fYnJlYWtzIiwgbGFiZWwgPSAiTnVtYmVyIG9mIGJpbnM6IiwNCiAgICAgICAgICAgICAgY2hvaWNlcyA9IGMoMTAsIDIwLCAzNSwgNTAsIDEwMCksIHNlbGVjdGVkID0gMjApDQopDQoNCnJlbmRlclBsb3Qoew0KICBnZ3Bsb3QoZGYpICsgZ2VvbV9oaXN0b2dyYW0oYmlucz1pbnB1dCRuX2JyZWFrcyxtYXBwaW5nID0gYWVzKHggPSBkYXRhdmFsdWVhbHQsIGZpbGwgPSB0b3BpYykpICsgeGxpbSgwLCAxMDApDQp9KQ0KDQpgYGANCg0KDQoNCg==</div>
 
 
 </div>
