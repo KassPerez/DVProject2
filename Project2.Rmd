@@ -31,7 +31,14 @@ The U.S. Chronic Disease Indicators dataset contains over 30,000 entries. Each i
 ```{r}
 project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
 data.world::set_config(cfg_env("DW_API"))
+
 df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 30000"), dataset = project)
+
+df2 <- data.world::query(data.world::qry_sql("SELECT yearstart, locationabbr as state, topic, datavaluealt as data_value,(highconfidencelimit - lowconfidencelimit) as confidence_range
+FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt < 200 limit 30000"), dataset = project)
+
+df3 <- data.world::query(data.world::qry_sql("SELECT yearstart, datavaluealt as data_value
+FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 30000"), dataset = project)
 ```
 
 ## One Green Thing with No Aggregate Measures 
@@ -48,12 +55,6 @@ renderPlot({
 ## Two Green Things with No Aggregate Measures 
 ### *Scatterplot of Diseases Across Confidence Ranges and Data Types*
 Below our team plotted data_value against the confidence range, with color classified by the topic, or disease type. Confidence range actuallly does not exist in the original dataset, so our team wrote a SQL query to essentally create a calculated field composed of the difference between high_confidence_limit and low_confidence_limit. The scatter plot below demonstrates an interesting phenomena: data values occur exclusively above a positive slope line up until a confidence range of 40, where a few data values deviate slightly below the invisible slope.
-```{r}
-project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
-data.world::set_config(cfg_env("DW_API"))
-df2 <- data.world::query(data.world::qry_sql("SELECT yearstart, locationabbr as state, topic, datavaluealt as data_value,(highconfidencelimit - lowconfidencelimit) as confidence_range
-FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt < 200 limit 30000"), dataset = project)
-```
 
 ```{r}
 
@@ -62,12 +63,6 @@ renderPlot({
 })
 ```
 
-```{r}
-project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
-data.world::set_config(cfg_env("DW_API"))
-df3 <- data.world::query(data.world::qry_sql("SELECT yearstart, datavaluealt as data_value
-FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 30000"), dataset = project)
-```
 
 ## One Green Thing with Aggregate Measures 
 ### *Histogram of Frequency of Diseases*
