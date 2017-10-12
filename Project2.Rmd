@@ -19,27 +19,14 @@ library(shiny)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
-
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-## **R Session Info**  
-
-```{r}
-sessionInfo()
-```
 ## **Github Link** 
 [Team 3 github](https://github.com/KassPerez/DVProject2)
 
 ## **Introduction** 
-Some Introduction.
+The purpose of this project is to create the following data visualizations using R's ggplot2 library: Boxplot(s), Histograms(s), Scatter Plots(s), Parameter(s), and Barchart(s). 
 
-## **Getting data from data.world** 
-Short description of the data.
+## **Description of the dataset:** 
+The U.S. Chronic Disease Indicators dataset contains over 30,000 entries. Each instance contains the attributes: yearstart, yearend, locationabbr, locationdesc, datasource, topic (disease type), question, response, datavalueunit, datavaluetype, datavalue, datavalue, datavaluealt, datavaluefootnotesymbol, datavaluefootnote, lowconfidencelimit, highconfidencelimit, strateficationcategory1, stratification1, stratificationcategory2, stratification2, stratificationcategory3, stratification3, geolocation, responseid, locationid, topicid, questionid, datavaluetypeid, strateficationcategoryid1, stratificationid1, stratificationcategoryid2, stratificationid2, stratificationcategoryid3, and stratificationid3.
 
 ```{r}
 project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
@@ -47,8 +34,9 @@ data.world::set_config(cfg_env("DW_API"))
 df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 30000"), dataset = project)
 ```
 
-## One Green Thing with No Aggregate Measures - Boxplot
-Some description
+## One Green Thing with No Aggregate Measures 
+### *Boxplot of Data Values* 
+Below my team plotted boxplots of data values, which are counts of a disease per year. Additionally, we separated these by disease type, to search for large discrepancies between the occurrences of each disease type per year. Among all disease types, Chronic Kidney Disease stands out in that all of its data values are above all other data values for every other disease. Overarching Diseases stands out for the opposite reason: every one of its data values occur below the means for all other disease types. 
 
 ```{r}
 
@@ -57,7 +45,8 @@ renderPlot({
 })
 ```
 
-## Two Green Things with No Aggregate Measures - Scatterplot
+## Two Green Things with No Aggregate Measures 
+### *Scatterplot of Diseases Across Confidence Ranges and Data Types*
 Below our team plotted data_value against the confidence range, with color classified by the topic, or disease type. Confidence range actuallly does not exist in the original dataset, so our team wrote a SQL query to essentally create a calculated field composed of the difference between high_confidence_limit and low_confidence_limit. The scatter plot below demonstrates an interesting phenomena: data values occur exclusively above a positive slope line up until a confidence range of 40, where a few data values deviate slightly below the invisible slope.
 ```{r}
 project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
@@ -80,18 +69,19 @@ df3 <- data.world::query(data.world::qry_sql("SELECT yearstart, datavaluealt as 
 FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 30000"), dataset = project)
 ```
 
-##Histogram: Frequency of Diseases
-Below we plot the frequency of disaeases, segmenting each bar by demographic information. 
+## One Green Thing with Aggregate Measures 
+### *Histogram of Frequency of Diseases*
+Below we plot the frequency of disaeases, segmenting each bar by demographic information. It is apparent that the data collectors did a good job of ensuring that an even distribution of each of their stratification1 demographics were distributed in the data. It is also clear that Diabetes is several multiples higher than any of the other diseases.
 
 ```{r}
 
 renderPlot({
-  ggplot(df, mapping = aes(x = topic, fill = stratification1)) + geom_histogram(bins = 1, stat="count")
+  ggplot(df, mapping = aes(x = topic, fill = stratification1)) + geom_histogram(bins = 1, stat="count") +   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 })
 
 ```
-## One Green Thing with Aggregate Measures - Histograms
-Some description
+### *Histogram of Data values*
+Here we see diseases across datavalues. Once again, it is very clear that Diabetes is the disease most frequently recorded, with that frequency increasing at data values greater than 50. We can see that the distribution of data values is not normally distributed, but instead has three large swells throughout the distribution. At the high and low end of data values (close to 0 and greater than 80), the frequency of data values drops noticeably.
 
 ```{r}
 
