@@ -57,6 +57,21 @@ renderPlot({
 })
 ```
 
+## Two Green Things with No Aggregate Measures - Scatterplot
+Below our team plotted data_value against the confidence range, with color classified by the topic, or disease type. Confidence range actuallly does not exist in the original dataset, so our team wrote a SQL query to essentally create a calculated field composed of the difference between high_confidence_limit and low_confidence_limit. The scatter plot below demonstrates an interesting phenomena: data values occur exclusively above a positive slope line up until a confidence range of 40, where a few data values deviate slightly below the invisible slope.
+```{r}
+project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
+data.world::set_config(cfg_env("DW_API"))
+df2 <- data.world::query(data.world::qry_sql("SELECT locationabbr as state, topic, datavaluealt as data_value,(highconfidencelimit - lowconfidencelimit) as confidence_range
+FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt < 200 limit 30000"), dataset = project)
+```
+
+```{r}
+
+renderPlot({
+    ggplot(df2) + geom_point(mapping = aes(x=confidence_range, y=data_value, color=topic))
+})
+```
 
 ## One Green Thing with Aggregate Measures - Histograms
 Some description
@@ -68,3 +83,6 @@ renderPlot({
 })
 
 ```
+
+
+
