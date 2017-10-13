@@ -71,3 +71,70 @@ renderPlot({
 ## One Green Thing with Aggregate Measures - Histograms
 Some description
 
+## One Blue Thing and One Green Thing - Barcharts
+Here we are looking at the what generally affects the population more and we also look if this stays true with 
+the four most populous 
+
+First lets look at the overall picture.
+
+```{r}
+renderPlot({
+  ggplot(df) + geom_col(aes(x = topicid, y = datavalue, color = topic))
+})
+```
+
+So as we can see the top four most reported diseases that affect the US are:
+COPD, Cardiovascular diseases, Diabetes, and Arthritis
+
+Now lets look and see if this pattern holds in the 4 most populous states
+
+```{r}
+inputPanel(
+  selectInput("states", label = "Select a state", choices = c("California", "Texas", "Florida", "New York"),
+              selected = "California")
+)
+
+renderPlot({
+  df %>% dplyr::filter(locationdesc == input$states) %>%
+    ggplot() + geom_col(aes(x = topicid, y = datavalue, color = topic)) 
+})
+```
+
+## Graphs with parameters - Barchart 
+Lets take a look at the over data and see how "intense" a report was, meaning how high the amount a certain disease was reported.
+
+First I create a new data frame that contains a new discrete variable 'intense' which either is recorded as low, medium, or high. 
+
+To determine when a value is low, medium, or high I used the 1st and 3rd quartile
+Values below the 1st quartile were assigned low, values above the 3rd were assigned high, everything else is medium
+
+```{r}
+summary(df$datavalue)
+
+df2 = df %>% dplyr::mutate(intense = ifelse(datavalue > 38, ifelse(datavalue < 64, "Medium", "High"), "Low"))
+
+```
+
+Now we can graph the count of the different intensities to see how big the reports are when the data was gathered
+We should expect that most of the data will be reported in the medium intensity level, lets see if that is true
+
+```{r}
+renderPlot({
+  ggplot(data = subset(df2, !is.na(intense))) + geom_bar(aes(x = intense))
+})
+```
+
+So our assumption is correct but now we can delve a bit more into the data.
+Another thing we can check from here is the same distribution but by diseases only. 
+
+```{r}
+inputPanel(
+  selectInput("xdisease", label = "Select disease", choices = c("Alcohol", "Arthritis", "Chronic Obstructive Pulmonary Disease", "Overarching Disease", "Diabetes", "Asthma", "Cardiovascular Disease", "Chronic Kidney Disease"), selected = "Alcohol")
+)
+
+renderPlot({
+  df2 %>% dplyr::filter(topic == input$xdisease & !is.na(intense)) %>%
+    ggplot() + geom_bar(aes(x = intense))
+})
+```
+
