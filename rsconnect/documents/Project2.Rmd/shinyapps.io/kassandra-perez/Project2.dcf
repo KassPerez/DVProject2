@@ -5,8 +5,8 @@ account: kassandra-perez
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 223903
-bundleId: 1024071
+bundleId: 1025660
 url: https://kassandra-perez.shinyapps.io/Project2/
-when: 1507845928.6895
+when: 1507921971.88396
 asMultiple: FALSE
 asStatic: FALSE

@@ -32,13 +32,15 @@ The U.S. Chronic Disease Indicators dataset contains over 30,000 entries. Each i
 project <- "https://data.world/omarolivarez/us-chronic-disease-indicators"
 data.world::set_config(cfg_env("DW_API"))
 
-df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 30000"), dataset = project)
+df <- data.world::query(data.world::qry_sql("SELECT * FROM u_s_chronic_disease_indicators_cdi LIMIT 25000"), dataset = project)
 
 df2 <- data.world::query(data.world::qry_sql("SELECT yearstart, locationabbr as state, topic, datavaluealt as data_value,(highconfidencelimit - lowconfidencelimit) as confidence_range
-FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt < 200 limit 30000"), dataset = project)
+FROM u_s_chronic_disease_indicators_cdi WHERE datavaluealt < 200 limit 25000"), dataset = project)
 
 df3 <- data.world::query(data.world::qry_sql("SELECT yearstart, datavaluealt as data_value
-FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 30000"), dataset = project)
+FROM u_s_chronic_disease_indicators_cdi GROUP BY yearstart limit 25000"), dataset = project)
+
+df4 <- df %>% dplyr::mutate(intense = ifelse(datavalue > 38, ifelse(datavalue < 64, "Medium", "High"), "Low"))
 
 topics = df %>% dplyr::distinct(topic)
 ```
@@ -48,9 +50,26 @@ topics = df %>% dplyr::distinct(topic)
 Below my team plotted boxplots of data values, which are counts of a disease per year. Additionally, we separated these by disease type, to search for large discrepancies between the occurrences of each disease type per year. Among all disease types, Chronic Kidney Disease stands out in that all of its data values are above all other data values for every other disease. Overarching Diseases stands out for the opposite reason: every one of its data values occur below the means for all other disease types. 
 
 ```{r}
+renderPlot({
+  ggplot(df, mapping = aes(x = topic, y = datavaluealt)) +
+      geom_boxplot() +
+      coord_flip()
+})
+```
+
+You can look at each of the diseases 
+
+```{r}
+
+inputPanel(
+  selectInput("selectTopicBox", label = "Select Disease",
+              choices = topics, multiple=FALSE, selected="Alcohol")
+)
 
 renderPlot({
-    ggplot(df) + geom_boxplot(mapping = aes(x=topic, y=datavaluealt)) +   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+   df %>% dplyr::filter(topic == input$selectTopicBox) %>% ggplot(df, mapping = aes(x = topic, y = datavaluealt, fill = stratification1 )) +
+      geom_boxplot() +
+    coord_flip()
 })
 ```
 
@@ -81,6 +100,16 @@ renderPlot({
 Here we see diseases across datavalues. Once again, it is very clear that Diabetes is the disease most frequently recorded, with that frequency increasing at data values greater than 50. We can see that the distribution of data values is not normally distributed, but instead has three large swells throughout the distribution. At the high and low end of data values (close to 0 and greater than 80), the frequency of data values drops noticeably.
 
 ```{r}
+renderPlot({
+   ggplot(df, mapping = aes(x = datavaluealt,fill = topic)) + geom_histogram(bins=60) + xlim(0, 100)
+})
+
+```
+
+
+Here you can change the bin size and and select which Topics you want to see.
+
+```{r}
 
 inputPanel(
   selectInput("n_breaks", label = "Number of bins:",
@@ -96,5 +125,67 @@ renderPlot({
 
 ```
 
+## One Blue Thing and One Green Thing - Barcharts
+Here we are looking at the what generally affects the population more and we also look if this stays true with 
+the four most populous 
 
+First lets look at the overall picture.
 
+```{r}
+renderPlot({
+  ggplot(df) + geom_col(aes(x = topicid, y = datavalue, color = topic)) +   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+})
+```
+
+So as we can see the top four most reported diseases that affect the US are:
+COPD, Cardiovascular diseases, Diabetes, and Arthritis
+
+Now lets look and see if this pattern holds in the 4 most populous states
+
+```{r}
+inputPanel(
+  selectInput("states", label = "Select a state", choices = c("California", "Texas", "Florida", "New York"),
+              selected = "California")
+)
+
+renderPlot({
+  df %>% dplyr::filter(locationdesc == input$states) %>%
+    ggplot() + geom_col(aes(x = topicid, y = datavalue, color = topic)) +   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+})
+```
+
+### *Graphs with parameters - Barchart* 
+Lets take a look at the over data and see how "intense" a report was, meaning how high the amount a certain disease was reported.
+
+First I create a new data frame that contains a new discrete variable 'intense' which either is recorded as low, medium, or high. 
+
+To determine when a value is low, medium, or high I used the 1st and 3rd quartile
+Values below the 1st quartile were assigned low, values above the 3rd were assigned high, everything else is medium
+
+```{r}
+summary(df$datavalue)
+
+```
+
+Now we can graph the count of the different intensities to see how big the reports are when the data was gathered
+We should expect that most of the data will be reported in the medium intensity level, lets see if that is true
+
+```{r}
+renderPlot({
+  ggplot(data = subset(df4, !is.na(intense))) + geom_bar(aes(x = intense))
+})
+```
+
+So our assumption is correct but now we can delve a bit more into the data.
+Another thing we can check from here is the same distribution but by diseases only. 
+
+```{r}
+inputPanel(
+  selectInput("xdisease", label = "Select disease", choices = c("Alcohol", "Arthritis", "Chronic Obstructive Pulmonary Disease", "Overarching Disease", "Diabetes", "Asthma", "Cardiovascular Disease", "Chronic Kidney Disease"), selected = "Alcohol")
+)
+
+renderPlot({
+  df4 %>% dplyr::filter(topic == input$xdisease & !is.na(intense)) %>%
+    ggplot() + geom_bar(aes(x = intense))
+})
+```
