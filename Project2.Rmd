@@ -57,7 +57,7 @@ renderPlot({
 })
 ```
 
-You can look at each of the diseases 
+Take a look at any one of the diseases by selecting one from the dropdown below.
 
 ```{r}
 
@@ -107,7 +107,7 @@ renderPlot({
 ```
 
 
-Here you can change the bin size and and select which Topics you want to see.
+You can use the selection field below to more than one disease to visualize. Additionally, you can change the bin size to develop a more granular picture of the data by selecting the desired bin size from the dropdown menu.
 
 ```{r}
 
